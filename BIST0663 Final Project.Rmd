@@ -1,0 +1,42 @@
+---
+title: "BISST0663_Final_Project"
+author: "Jueshen Hou  Zimeng Ren"
+date: "2024-10-09"
+output: pdf_document
+---
+
+
+```{r install package in case you do not have it, eval=FALSE, include=FALSE}
+##These packages are needed for later code chunks,if you do not have the following packages installed, please run this chunk to ensure all packages needed are installed.
+install.packages(c("ggplot2","broom","gridExtra","dplyr","class","tidyverse","leaps","corrplot","RColorBrewer","glmnet","xtable","randomForest","pROC","devtools","UpSetR","naniar","report","rpart","rattle","rpart.plot"))
+```
+
+```{r load packages, include=FALSE}
+##Here we load the packages needed and install a package that is not on CRAN
+library(ggplot2)
+library(broom)
+library(gridExtra)
+library(dplyr)
+library(class)
+library(tidyverse)
+library(gridExtra)
+library(leaps)
+library(corrplot)
+library(RColorBrewer)
+library(glmnet)
+library(xtable)
+library(randomForest)
+library(pROC)
+#library(smotefamily)
+library(devtools)
+devtools::install_github("dongyuanwu/RSBID")
+library(RSBID)
+library(UpSetR)
+library(naniar)
+library(report)
+library(rpart)
+library(rattle)
+library(rpart.plot)
+```
+```
+
