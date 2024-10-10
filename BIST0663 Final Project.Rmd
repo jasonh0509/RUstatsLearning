@@ -30,7 +30,6 @@ library(pROC)
 #library(smotefamily)
 library(devtools)
 devtools::install_github("dongyuanwu/RSBID")
-library(RSBID)
 library(UpSetR)
 library(naniar)
 library(report)
@@ -38,5 +37,18 @@ library(rpart)
 library(rattle)
 library(rpart.plot)
 ```
+
+### Load Data
+```{r}
+ALZH<-read.csv("C:/Users/24597/Documents/RUstatsLearning/alzheimers_disease_data.csv")
+```
+
+### Take a Look
+
+```{r}
+glimpse(ALZH)
+```
+```{r}
+ALZH_noID<-ALZH[,-1]
 ```
 
