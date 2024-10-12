@@ -63,16 +63,36 @@ ALZH_noID <- ALZH_noID %>%
   mutate(across(c(Gender, Ethnicity,EducationLevel,Smoking,FamilyHistoryAlzheimers,CardiovascularDisease,Diabetes,Depression,HeadInjury,Hypertension,MemoryComplaints,BehavioralProblems,Confusion,Disorientation,PersonalityChanges,DifficultyCompletingTasks,Forgetfulness), as.factor))
 ```
 
+```{r}
+alzh_classes<-ggplot(data = ALZH_noID, mapping = aes(x=Diagnosis,fill=Diagnosis))+
+  geom_bar()+
+  xlab("Diagnosis Status")+
+  ggtitle("Figure x.x Classes of Alzheimer's Disease")
+  
+alzh_classes
+```
+```{r}
+ALZH_noID_balanced<-SMOTE_NC(ALZH_noID,"Diagnosis",perc_maj = 60,k=5)
+```
+
+```{r}
+ggplot(data = ALZH_noID_balanced, mapping = aes(x=Diagnosis,fill=Diagnosis))+
+  geom_bar()+
+  xlab("Diagnosis Status")+
+  ggtitle("Figure x.x Classes of Alzheimer's Disease")
+  
+```
+
 
 ```{r}
 glimpse(ALZH_noID)
 ```
 
 ```{r}
-ALZH_IntOnly<-ALZH_noID[,sapply(ALZH_noID,is.integer)]
-ALZH_double<-ALZH_noID[,sapply(ALZH_noID,is.double)]
+ALZH_IntOnly<-ALZH_noID_balanced[,sapply(ALZH_noID,is.integer)]
+ALZH_double<-ALZH_noID_balanced[,sapply(ALZH_noID,is.double)]
 ALZH_NumOnly<-cbind(ALZH_IntOnly,ALZH_double)
-ALZH_fct<-ALZH_noID[,sapply(ALZH_noID,is.factor)]
+ALZH_fct<-ALZH_noID_balanced[,sapply(ALZH_noID,is.factor)]
 
 ```
 
@@ -87,20 +107,7 @@ plot_qq(ALZH_NumOnly)
 
 
 ```{r}
-glimpse(ALZH_noID)
-```
-
-```{r}
-alzh_classes<-ggplot(data = ALZH_noID, mapping = aes(x=Diagnosis,fill=Diagnosis))+
-  geom_bar()+
-  xlab("Diagnosis Status")+
-  ggtitle("Figure x.x Classes of Alzheimer's Disease")
-  
-alzh_classes
-```
-
-```{r}
-plot_intro(ALZH_noID)
+plot_intro(ALZH_noID_balanced)
 ```
 
 
@@ -109,6 +116,9 @@ plot_intro(ALZH_noID)
 plot_bar(ALZH_fct)
 ```
 
+```{r}
+na_plot_ALZH<-vis_miss(ALZH_noID);na_plot_ALZH
+```
 
 ### KNN
 
