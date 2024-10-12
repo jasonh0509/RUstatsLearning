@@ -36,6 +36,7 @@ library(report)
 library(rpart)
 library(rattle)
 library(rpart.plot)
+library(DataExplorer)
 ```
 
 ### Load Data
@@ -58,8 +59,13 @@ colSums(is.na(ALZH_noID))
 
 ```{r changing data types}
 ALZH_noID$Diagnosis<-as.factor(ALZH_noID$Diagnosis)
+ALZH_noID <- ALZH_noID %>%
+  mutate(across(c(Gender, Ethnicity,EducationLevel,Smoking,FamilyHistoryAlzheimers,CardiovascularDisease,Diabetes,Depression,HeadInjury,Hypertension), as.factor))
 ```
 
+```{r}
+glimpse(ALZH_noID)
+```
 
 ```{r}
 alzh_classes<-ggplot(data = ALZH_noID, mapping = aes(x=Diagnosis,fill=Diagnosis))+
@@ -70,3 +76,15 @@ alzh_classes<-ggplot(data = ALZH_noID, mapping = aes(x=Diagnosis,fill=Diagnosis)
 alzh_classes
 ```
 
+```{r}
+plot_intro(ALZH_noID)
+```
+
+```{r}
+
+```
+
+
+### KNN
+
+### Boosting
