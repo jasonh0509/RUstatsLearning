@@ -52,3 +52,21 @@ glimpse(ALZH)
 ALZH_noID<-ALZH[,-1]
 ```
 
+```{r}
+colSums(is.na(ALZH_noID))
+```
+
+```{r changing data types}
+ALZH_noID$Diagnosis<-as.factor(ALZH_noID$Diagnosis)
+```
+
+
+```{r}
+alzh_classes<-ggplot(data = ALZH_noID, mapping = aes(x=Diagnosis,fill=Diagnosis))+
+  geom_bar()+
+  xlab("Diagnosis Status")+
+  ggtitle("Figure x.x Classes of Alzheimer's Disease")
+  
+alzh_classes
+```
+
