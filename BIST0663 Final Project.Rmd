@@ -60,8 +60,31 @@ colSums(is.na(ALZH_noID))
 ```{r changing data types}
 ALZH_noID$Diagnosis<-as.factor(ALZH_noID$Diagnosis)
 ALZH_noID <- ALZH_noID %>%
-  mutate(across(c(Gender, Ethnicity,EducationLevel,Smoking,FamilyHistoryAlzheimers,CardiovascularDisease,Diabetes,Depression,HeadInjury,Hypertension), as.factor))
+  mutate(across(c(Gender, Ethnicity,EducationLevel,Smoking,FamilyHistoryAlzheimers,CardiovascularDisease,Diabetes,Depression,HeadInjury,Hypertension,MemoryComplaints,BehavioralProblems,Confusion,Disorientation,PersonalityChanges,DifficultyCompletingTasks,Forgetfulness), as.factor))
 ```
+
+
+```{r}
+glimpse(ALZH_noID)
+```
+
+```{r}
+ALZH_IntOnly<-ALZH_noID[,sapply(ALZH_noID,is.integer)]
+ALZH_double<-ALZH_noID[,sapply(ALZH_noID,is.double)]
+ALZH_NumOnly<-cbind(ALZH_IntOnly,ALZH_double)
+ALZH_fct<-ALZH_noID[,sapply(ALZH_noID,is.factor)]
+
+```
+
+```{r}
+glimpse(ALZH_NumOnly)
+```
+
+```{r}
+plot_qq(ALZH_NumOnly)
+```
+
+
 
 ```{r}
 glimpse(ALZH_noID)
@@ -81,7 +104,11 @@ plot_intro(ALZH_noID)
 ```
 
 ```{r}
+plot_qq(ALZH_noID)
+```
 
+```{r}
+plot_bar(ALZH_fct)
 ```
 
 
