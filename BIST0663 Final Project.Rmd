@@ -53,6 +53,12 @@ glimpse(ALZH)
 ALZH_noID<-ALZH[,-1]
 ```
 
+
+```{r}
+na_plot_ALZH<-vis_miss(ALZH_noID);na_plot_ALZH
+
+```
+
 ```{r}
 colSums(is.na(ALZH_noID))
 ```
@@ -113,12 +119,11 @@ plot_intro(ALZH_noID_balanced)
 
 
 ```{r}
-plot_bar(ALZH_fct)
+plot_bar(ALZH_fct[,-18],ggtheme = theme_classic())
 ```
 
-```{r}
-na_plot_ALZH<-vis_miss(ALZH_noID);na_plot_ALZH
-```
+
+
 
 ### KNN
 
