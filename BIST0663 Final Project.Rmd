@@ -103,9 +103,7 @@ alzh_classes
 plot_intro(ALZH_noID)
 ```
 
-```{r}
-plot_qq(ALZH_noID)
-```
+
 
 ```{r}
 plot_bar(ALZH_fct)
